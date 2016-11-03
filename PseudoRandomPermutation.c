@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 /*
  This was written by herm1t as he published it in: http://vxheaven.org/forum/viewtopic.php?id=205
 */
@@ -6,7 +8,6 @@
         described in the article "Advanced polymorphic engine
         construction" by The Mental Driller/29A, published in
         29A#5
-
         Register1 = Random(Encrypted_Data_Size)
         Register2 = InitialValue
 Loop_Label:
@@ -21,19 +22,22 @@ Loop_Label:
 
 unsigned int _random(unsigned int range)
 {
-        return^M random() % range;
+        return rand() % range;
 }
 
 int main(int argc, char **argv)
 {
         unsigned int    r0, r1, r2, init, ds = 16;
-        unsigned char   i, seq[ds], test;
+        unsigned char   i, test;
+		unsigned char* seq;
+
+		seq = malloc(ds * sizeof(typeof(seq)));
         
         /*      ds      - encrypted data size (must be power of 2)
                 init    - init value for the counter
         */
 
-        srandom(time(0));       
+        srand(time(0));       
         for (init = 0; init < ds; init++) {
                 for (i = 0; i < ds; i++)
                         seq[i] = 0;     

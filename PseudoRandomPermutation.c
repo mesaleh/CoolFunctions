@@ -29,9 +29,9 @@ int main(int argc, char **argv)
 {
         unsigned int    r0, r1, r2, init, ds = 16;
         unsigned char   i, test;
-		unsigned char* seq;
+        unsigned char* seq;
 
-		seq = malloc(ds * sizeof(typeof(seq)));
+        seq = malloc(ds * sizeof(typeof(seq)));
         
         /*      ds      - encrypted data size (must be power of 2)
                 init    - init value for the counter
